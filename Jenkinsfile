@@ -4,7 +4,7 @@ def do_it = {
 }
 pipeline {
     agent {
-        docker "python3.5"
+        docker "python3.7"
     }
     stages {
         stage("build"){
