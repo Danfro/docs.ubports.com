@@ -3,11 +3,12 @@ def do_it = {
     sh 'date' >> out.txt
 }
 pipeline {
-    agent {
-        docker "python3.7"
-    }
+    agent none
     stages {
         stage("build"){
+            agent {
+                docker "python3.7"
+            }
             steps {
                 script {do_it()}
             }
