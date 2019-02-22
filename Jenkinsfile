@@ -4,6 +4,9 @@ def install_dependencies = {
 def build_docs = {
     sh 'pipenv run sphinx-build -Wab html . _build/html/'
 }
+def just_build_it_already = {
+    sh './build.sh'
+}
 pipeline {
     agent none
     stages {
@@ -13,7 +16,7 @@ pipeline {
             }
             steps {
                 script {install_dependencies()}
-                script {build_docs()}
+                script {just_build_it_already()}
                 archiveArtifacts artifacts: 'docs/_build/html/', onlyIfSuccessful: true
                 deleteDir()
             }
