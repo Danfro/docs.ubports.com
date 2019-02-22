@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage("build"){
             agent {
-                docker "python3.6"
+                docker "python3.7"
             }
             steps {
                 script {do_it()}
