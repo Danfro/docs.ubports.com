@@ -1,4 +1,5 @@
 def do_it = {
+    sh 'mkdir out'
     sh 'id | tee out/out.txt'
     sh 'date | tee -a out/out.txt'
 }
