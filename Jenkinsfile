@@ -1,6 +1,6 @@
 def do_it = {
-    sh 'id' > out.txt
-    sh 'date' >> out.txt
+    sh 'id | tee out.txt'
+    sh 'date | tee -a out.txt'
 }
 pipeline {
     agent none
