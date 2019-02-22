@@ -15,7 +15,6 @@ pipeline {
                 docker "python:3.7"
             }
             steps {
-                script {install_dependencies()}
                 script {just_build_it_already()}
                 archiveArtifacts artifacts: 'docs/_build/html/', onlyIfSuccessful: true
                 deleteDir()
