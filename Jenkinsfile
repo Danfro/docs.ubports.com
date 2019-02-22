@@ -12,7 +12,7 @@ pipeline {
             }
             steps {
                 script {do_it()}
-                archiveArtefacts artifacts: 'out/', onlyIfSuccessful:true
+                archiveArtifacts artifacts: 'out/', onlyIfSuccessful:true
             }
         }
     }
