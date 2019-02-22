@@ -1,7 +1,8 @@
-def do_it = {
-    sh 'mkdir out'
-    sh 'id | tee out/out.txt'
-    sh 'date | tee -a out/out.txt'
+def install_dependencies = {
+    sh 'pip install --no-cache-dir -r requirements.txt'
+}
+def build_docs = {
+    sh 'pipenv run sphinx-build -Wab html . _build/html/'
 }
 pipeline {
     agent none
@@ -11,8 +12,10 @@ pipeline {
                 docker "python:3.7"
             }
             steps {
-                script {do_it()}
-                archiveArtifacts artifacts: 'out/', onlyIfSuccessful:true
+                script {install_dependencies()}
+                script {build_docs()}
+                archiveArtifacts artifacts: 'docs/_build/html/', onlyIfSuccessful: true
+                deleteDir()
             }
         }
     }
