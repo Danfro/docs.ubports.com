@@ -1,5 +1,5 @@
 def install_dependencies = {
-    # sh 'pip install --user --target mypip --no-cache-dir -r requirements.txt'
+    // sh 'pip install --user --target mypip --no-cache-dir -r requirements.txt'
     sh 'apt install virtualenv'
 }
 def build_docs = {
